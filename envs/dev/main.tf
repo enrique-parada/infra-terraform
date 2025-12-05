@@ -32,3 +32,15 @@ module "api_gateway" {
   lambda_invoke_arn = module.lambda_api.lambda_invoke_arn
 }
 
+module "frontend_s3" {
+  source = "../../modules/frontend_s3"
+
+  bucket_name = "devops-text-toolkit-frontend-dev"
+
+  tags = {
+    Environment = "dev"
+    Project     = "devops-text-toolkit"
+  }
+}
+
+
