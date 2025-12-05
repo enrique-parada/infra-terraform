@@ -12,7 +12,7 @@ variable "runtime" {
 variable "handler" {
   type        = string
   description = "Handler de la Lambda"
-  default     = "main.handler"
+  default     = "app.main.handler"
 }
 
 variable "lambda_filename" {
