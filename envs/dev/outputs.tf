@@ -1,1 +1,4 @@
-# Outputs del entorno dev (se llenarán cuando agreguemos recursos)
+output "lambda_function_name" {
+  value = module.lambda_api.lambda_name
+}
+
