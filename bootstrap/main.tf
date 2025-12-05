@@ -13,9 +13,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# ⚠️ Cambia este nombre por algo único en tu cuenta
+
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "devops-tf-state-enrique-<algo-unico>"
+  bucket = "devops-tf-state-enrique-textapp"
 
   lifecycle {
     prevent_destroy = true
