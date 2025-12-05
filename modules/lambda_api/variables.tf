@@ -6,7 +6,7 @@ variable "function_name" {
 variable "runtime" {
   type        = string
   description = "Runtime de la Lambda"
-  default     = "python3.11"
+  default     = "python3.12"
 }
 
 variable "handler" {
