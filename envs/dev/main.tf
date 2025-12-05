@@ -13,3 +13,34 @@ provider "aws" {
   region = var.region
 }
 
+module "lambda_api" {
+  source = "../../modules/lambda_api"
+
+  function_name = "devops-text-toolkit-api-dev"
+  runtime       = "python3.12"
+  handler       = "app.main.handler"
+  app_env       = "dev"
+
+  # Más adelante crearemos este ZIP desde el repo de backend.
+  lambda_filename = "${path.module}/../../artifacts/backend.zip"
+}
+
+module "api_gateway" {
+  source            = "../../modules/api_gateway"
+  name              = "devops-text-toolkit-apigw-dev"
+  lambda_arn        = module.lambda_api.lambda_arn
+  lambda_invoke_arn = module.lambda_api.lambda_invoke_arn
+}
+
+module "frontend_s3" {
+  source = "../../modules/frontend_s3"
+
+  bucket_name = "devops-text-toolkit-frontend-dev"
+
+  tags = {
+    Environment = "dev"
+    Project     = "devops-text-toolkit"
+  }
+}
+
+
