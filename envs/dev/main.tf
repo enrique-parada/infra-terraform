@@ -17,8 +17,8 @@ module "lambda_api" {
   source = "../../modules/lambda_api"
 
   function_name = "devops-text-toolkit-api-dev"
-  runtime       = "python3.11"
-  handler       = "main.handler"
+  runtime       = "python3.12"
+  handler       = "app.main.handler"
   app_env       = "dev"
 
   # Más adelante crearemos este ZIP desde el repo de backend.
