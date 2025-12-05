@@ -13,3 +13,15 @@ provider "aws" {
   region = var.region
 }
 
+module "lambda_api" {
+  source = "../../modules/lambda_api"
+
+  function_name = "devops-text-toolkit-api-dev"
+  runtime       = "python3.11"
+  handler       = "main.handler"
+  app_env       = "dev"
+
+  # Más adelante crearemos este ZIP desde el repo de backend.
+  lambda_filename = "${path.module}/../../artifacts/backend.zip"
+}
+
