@@ -25,3 +25,10 @@ module "lambda_api" {
   lambda_filename = "${path.module}/../../artifacts/backend.zip"
 }
 
+module "api_gateway" {
+  source            = "../../modules/api_gateway"
+  name              = "devops-text-toolkit-apigw-dev"
+  lambda_arn        = module.lambda_api.lambda_arn
+  lambda_invoke_arn = module.lambda_api.lambda_invoke_arn
+}
+
