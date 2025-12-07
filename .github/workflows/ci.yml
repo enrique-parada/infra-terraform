@@ -37,7 +37,7 @@ jobs:
 
   security-tfsec:
     runs-on: ubuntu-latest
-    needs: [terraform-fmt-validate]
+    needs: [terraform-ci]
 
     steps:
       - name: Checkout
